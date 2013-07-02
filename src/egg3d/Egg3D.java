@@ -12,6 +12,8 @@ import serialcom.SerialListener;
 
 public class Egg3D implements Closeable
 {
+	private static final String cDefaultWindowsComPort = "COM10";
+
 	static final int cMessageLength = 18;
 
 	Serial mSerial;
@@ -96,8 +98,12 @@ public class Egg3D implements Closeable
 	{
 		try
 		{
-			if (System.getProperty("os.name").toLowerCase().contains("mac"))
+			final String lOSName = System.getProperty("os.name")
+																		.toLowerCase();
+			if (lOSName.contains("mac"))
 				return mSerial.connect("/dev/tty.Egg3D-DevB");
+			else if (lOSName.contains("win"))
+				return mSerial.connect(cDefaultWindowsComPort);
 			else
 				return mSerial.connect();
 		}
