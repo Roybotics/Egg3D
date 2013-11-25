@@ -12,7 +12,7 @@ import serialcom.SerialListener;
 
 public class Egg3D implements Closeable
 {
-	private static final String cDefaultWindowsComPort = "COM10";
+	private static final String cDefaultWindowsComPort = "COM14";
 
 	static final int cMessageLength = 18;
 
