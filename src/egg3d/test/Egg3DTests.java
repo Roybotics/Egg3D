@@ -34,17 +34,19 @@ public class Egg3DTests
 													final float pButton2,
 													final float pButton3)
 			{
-				System.out.format(" q = (%g,%g,%g,%g) ; a = (%g,%g,%g ; b = (%f,%f,%f) \n",
-													pQuatW,
-													pQuatX,
-													pQuatY,
-													pQuatZ,
-													pAccX,
-													pAccY,
-													pAccZ,
-													pButton1,
-													pButton2,
-													pButton3);
+				// if (Math.abs(pAccX) + Math.abs(pAccY) + Math.abs(pAccZ) > 1)
+				if (pAccX > 0.1)
+					System.out.format(" q = (%g,%g,%g,%g) ; a = (%g,%g,%g ; b = (%f,%f,%f) \n",
+														pQuatW,
+														pQuatX,
+														pQuatY,
+														pQuatZ,
+														pAccX,
+														pAccY,
+														pAccZ,
+														pButton1,
+														pButton2,
+														pButton3);
 			}
 
 		});

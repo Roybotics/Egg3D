@@ -30,6 +30,7 @@ public class Egg3D implements Closeable
 
 		mSerial.setBinaryMode(true);
 		mSerial.setMessageLength(cMessageLength);
+		mSerial.setLineTerminationCharacter('\n');
 
 		mSerial.addListener(new SerialListener()
 		{
