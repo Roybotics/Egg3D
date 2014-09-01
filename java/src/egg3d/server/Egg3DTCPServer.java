@@ -68,28 +68,43 @@ public class Egg3DTCPServer implements Egg3DListener
 
 		final ServerSocket lWelcomeSocket = new ServerSocket(cEgg3DTCPport);
 		lWelcomeSocket.setSoTimeout(250);
+		sConnectionSocket = null;
 		while (sOn)
 		{
 			System.out.println("Waiting for TCP connection...");
-			sConnectionSocket = null;
+
+			while (sConnectionSocket != null)
+			{
+				Thread.sleep(100);
+			}
+
 			while (sOn && sConnectionSocket == null)
 			{
 				try
 				{
 					sConnectionSocket = lWelcomeSocket.accept();
-
 				}
 				catch (SocketTimeoutException e)
 				{
 				}
 			}
 
-			if (sConnectionSocket != null)
+			Socket lConnectionSocket = sConnectionSocket;
+			if (lConnectionSocket != null && lConnectionSocket.isConnected()
+					&& !lConnectionSocket.isClosed())
 			{
-				System.out.println("Connection received from: " + sConnectionSocket.getInetAddress());
-				sInFromClient = new BufferedReader(new InputStreamReader(sConnectionSocket.getInputStream()));
-				sOutToClient = new DataOutputStream(sConnectionSocket.getOutputStream());
-				sInfoItem.setLabel("client connected");
+				try
+				{
+					System.out.println("Connection received from: " + lConnectionSocket.getInetAddress());
+					sInFromClient = new BufferedReader(new InputStreamReader(lConnectionSocket.getInputStream()));
+					sOutToClient = new DataOutputStream(lConnectionSocket.getOutputStream());
+					sInfoItem.setLabel("Client connected");
+				}
+				catch (Throwable e)
+				{
+					e.printStackTrace();
+					sConnectionSocket=null;
+				}
 			}
 
 		}
@@ -226,7 +241,7 @@ public class Egg3DTCPServer implements Egg3DListener
 		if (sOutToClient != null)
 			try
 			{
-				System.out.format("[%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f,%.1f]\n",
+				/*System.out.format("[%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f,%.1f]\n",
 													pQuatW,
 													pQuatX,
 													pQuatY,
@@ -267,7 +282,11 @@ public class Egg3DTCPServer implements Egg3DListener
 				sOutToClient = null;
 				try
 				{
-					sConnectionSocket.close();
+					if (sConnectionSocket != null)
+					{
+						sConnectionSocket.close();
+						sConnectionSocket = null;
+					}
 				}
 				catch (final IOException e1)
 				{

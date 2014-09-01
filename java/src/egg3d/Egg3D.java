@@ -241,7 +241,7 @@ public class Egg3D implements Closeable
 	 */
 	private float convertButton(final byte pByteValue)
 	{
-		return (int) ((pByteValue & 0xFF) / 255);
+		return (int) ((pByteValue & 0xFF));
 	}
 
 	/**
