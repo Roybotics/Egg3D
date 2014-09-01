@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
+  <info organisation="royer" module="Egg3D" revision="2.0" status="integration" publication="20140901152809">
+    <description/>
+  </info>
+  <configurations>
+    <conf name="archives" visibility="public" description="Configuration for archive artifacts."/>
+    <conf name="compile" visibility="private" description="Compile classpath for source set 'main'."/>
+    <conf name="default" visibility="public" description="Configuration for default artifacts." extends="runtime"/>
+    <conf name="executableJar" visibility="private" description="The One-JAR library to be used for this project." transitive="false"/>
+    <conf name="runtime" visibility="private" description="Runtime classpath for source set 'main'." extends="compile"/>
+    <conf name="testCompile" visibility="private" description="Compile classpath for source set 'test'." extends="compile"/>
+    <conf name="testRuntime" visibility="private" description="Runtime classpath for source set 'test'." extends="runtime,testCompile"/>
+  </configurations>
+  <publications>
+    <artifact name="Egg3D" type="jar" ext="jar" conf="archives,runtime"/>
+    <artifact name="Egg3D" type="jar" ext="jar" conf="archives" m:classifier="sources"/>
+    <artifact name="Egg3D" type="jar" ext="jar" conf="archives" m:classifier="javadoc"/>
+  </publications>
+  <dependencies>
+    <dependency org="commons-collections" name="commons-collections" rev="3.+" conf="compile-&gt;default"/>
+    <dependency org="commons-lang" name="commons-lang" rev="2.+" conf="compile-&gt;default"/>
+    <dependency org="commons-io" name="commons-io" rev="2.+" conf="compile-&gt;default"/>
+    <dependency org="org.apache.commons" name="commons-math3" rev="3.+" conf="compile-&gt;default"/>
+    <dependency org="net.sf.trove4j" name="trove4j" rev="3.0.3" conf="compile-&gt;default"/>
+    <dependency org="org.scream3r" name="jssc" rev="2.8.0" conf="compile-&gt;default"/>
+    <dependency org="junit" name="junit" rev="4.+" conf="compile-&gt;default"/>
+    <dependency org="one-jar" name="one-jar-boot" rev="0.97" conf="executableJar-&gt;default"/>
+    <dependency org="junit" name="junit" rev="4.+" conf="testCompile-&gt;default"/>
+  </dependencies>
+</ivy-module>
