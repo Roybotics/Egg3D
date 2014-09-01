@@ -39,6 +39,7 @@ import egg3d.Egg3DListener;
 public class Egg3DTCPServer implements Egg3DListener
 {
 
+	private static final int cEgg3DTCPport = 4444;
 	private static DataOutputStream sOutToClient;
 	private static BufferedReader sInFromClient;
 	private static volatile Socket sConnectionSocket;
@@ -65,7 +66,7 @@ public class Egg3DTCPServer implements Egg3DListener
 
 		startEgg3dThread();
 
-		final ServerSocket lWelcomeSocket = new ServerSocket(4444);
+		final ServerSocket lWelcomeSocket = new ServerSocket(cEgg3DTCPport);
 		lWelcomeSocket.setSoTimeout(250);
 		while (sOn)
 		{

@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Created-By: Gradle Executable Jar task
-Main-Class: com.simontuffs.onejar.Boot
-One-Jar-Main-Class: egg3d.server.Egg3DTCPServer
-
