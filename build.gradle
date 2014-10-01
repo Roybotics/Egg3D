@@ -1,3 +1,14 @@
+// For building exe launch4j must be found on the path
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'edu.sc.seis.gradle:launch4j:1.0.6'
+    }
+}
+
 plugins {
   id "us.kirchmeier.capsule" version "0.9.0"
 }
@@ -5,7 +16,7 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
-
+apply plugin: 'launch4j'
 
 
 sourceSets 
@@ -115,6 +126,14 @@ uploadArchives
 task fatCapsule(type: FatCapsule) {
   applicationClass 'egg3d.server.Egg3DTCPServer'
   reallyExecutable
+}
+
+
+
+launch4j {
+    mainClassName = "egg3d.server.Egg3DTCPServer"
+    icon = '../../java/src/egg3d/server/icon/Egg.256x256.alpha.ico'
+    jar = "lib/Egg3D-2.0.jar"
 }
 
 
