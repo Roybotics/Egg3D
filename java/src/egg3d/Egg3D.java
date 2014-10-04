@@ -1,6 +1,5 @@
 package egg3d;
 
-import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.nio.ByteBuffer;
@@ -25,7 +24,7 @@ import egg3d.serial.SerialListener;
  * @author Loic Royer 2014
  *
  */
-public class Egg3D implements Closeable
+public class Egg3D implements AutoCloseable
 {
 
 	static final int cMessageLength = 18;
@@ -229,7 +228,7 @@ public class Egg3D implements Closeable
 	 */
 	private float convert(final short pShortValue)
 	{
-		return (((float) pShortValue) / 16384.0f);
+		return ((pShortValue) / 16384.0f);
 	}
 
 	/**
@@ -241,7 +240,7 @@ public class Egg3D implements Closeable
 	 */
 	private float convertButton(final byte pByteValue)
 	{
-		return (int) ((pByteValue & 0xFF));
+		return ((pByteValue & 0xFF));
 	}
 
 	/**
