@@ -102,7 +102,7 @@ public class Egg3D implements AutoCloseable
 	/**
 	 * Connects to the Egg3D device using default port information.
 	 * 
-	 * @return
+	 * @return true if connected
 	 * @throws SerialPortException
 	 *           when error while connecting to serial port
 	 */
@@ -114,13 +114,13 @@ public class Egg3D implements AutoCloseable
 				return mSerial.connect("/dev/tty.Egg3D-DevB");
 			else if (SystemUtils.IS_OS_WINDOWS)
 			{
-				File lUserDirectory = FileUtils.getUserDirectory();
-				File lConfigurationFile = new File(	lUserDirectory,
-																						".egg3d.conf.txt");
-				Properties lProperties = new Properties();
+				final File lUserDirectory = FileUtils.getUserDirectory();
+				final File lConfigurationFile = new File(	lUserDirectory,
+																									".egg3d.conf.txt");
+				final Properties lProperties = new Properties();
 				lProperties.load(new FileInputStream(lConfigurationFile));
 
-				String lPort = lProperties.getProperty("port");
+				final String lPort = lProperties.getProperty("port");
 
 				return connect(lPort);
 			}
@@ -137,9 +137,12 @@ public class Egg3D implements AutoCloseable
 	 * Connects to the Egg3D device bound to a given port.
 	 * 
 	 * @param pPortName
-	 * @return
+	 *          serial port name
+	 * @return true if connected
 	 * @throws SerialPortException
+	 *           exception
 	 * @throws SerialComException
+	 *           exception
 	 */
 	public boolean connect(String pPortName) throws SerialPortException,
 																					SerialComException

@@ -20,6 +20,7 @@ public class SerialComException extends Exception
 	 * Constructs an instance of the SerialComException class
 	 * 
 	 * @param pString
+	 *          exception message
 	 */
 	public SerialComException(final String pString)
 	{

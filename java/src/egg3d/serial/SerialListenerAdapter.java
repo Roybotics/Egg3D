@@ -1,6 +1,5 @@
 package egg3d.serial;
 
-
 /**
  * Class SerialListenerAdapter
  * 

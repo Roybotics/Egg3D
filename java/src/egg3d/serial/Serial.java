@@ -97,7 +97,7 @@ public class Serial
 	 * 
 	 * @param pNameHint
 	 *          substring hint
-	 * @return
+	 * @return list of serial ports names
 	 */
 	public static ArrayList<String> getListOfAllSerialCommPortsWithNameContaining(final String pNameHint)
 	{
@@ -117,7 +117,7 @@ public class Serial
 	 * 
 	 * @param pNameHint
 	 *          substring hint
-	 * @return
+	 * @return serial port anme
 	 */
 	public static String getOneSerialCommPortWithNameContaining(final String pNameHint)
 	{
@@ -128,13 +128,14 @@ public class Serial
 			return null;
 	}
 
-
 	/**
 	 * Connects to serial device.
 	 * 
 	 * @return true if connected, false if not
 	 * @throws SerialPortException
+	 *           exception
 	 * @throws SerialComException
+	 *           exception
 	 */
 	public final boolean connect() throws SerialPortException,
 																SerialComException
@@ -150,8 +151,10 @@ public class Serial
 	 * Connects to a given port name
 	 * 
 	 * @param pPortName
-	 * @return
+	 *          serial pot name
+	 * @return true if connected
 	 * @throws SerialPortException
+	 *           exception
 	 */
 	public final boolean connect(final String pPortName) throws SerialPortException
 	{
@@ -195,6 +198,7 @@ public class Serial
 	 * @param pString
 	 *          string to send
 	 * @throws SerialPortException
+	 *           exception
 	 */
 	public final void write(final String pString) throws SerialPortException
 	{
@@ -207,6 +211,7 @@ public class Serial
 	 * @param pBytes
 	 *          bytes to send
 	 * @throws SerialPortException
+	 *           exception
 	 */
 	public final void write(final byte[] pBytes) throws SerialPortException
 	{
@@ -219,6 +224,7 @@ public class Serial
 	 * @param pByte
 	 *          byte to send
 	 * @throws SerialPortException
+	 *           exception
 	 */
 	public final void write(final byte pByte) throws SerialPortException
 	{
@@ -229,6 +235,7 @@ public class Serial
 	 * Purges serial port.
 	 * 
 	 * @throws SerialPortException
+	 *           exception
 	 */
 	public final void purge() throws SerialPortException
 	{
@@ -320,7 +327,7 @@ public class Serial
 	/**
 	 * Returns the state of the flow control flags.
 	 * 
-	 * @return
+	 * @return flow control state
 	 */
 	public final int getFlowControl()
 	{
@@ -474,6 +481,7 @@ public class Serial
 	 * Closes the connection.
 	 * 
 	 * @throws SerialPortException
+	 *           exception
 	 */
 	public final void close() throws SerialPortException
 	{
@@ -497,7 +505,7 @@ public class Serial
 	 * 
 	 * @param pWaitTime
 	 *          wait time in milliseconds.
-	 * @return
+	 * @return answer
 	 */
 	public String waitForAnswer(final int pWaitTime)
 	{
@@ -530,7 +538,8 @@ public class Serial
 	 * to arrive and returns it.
 	 * 
 	 * @param pTimeOutInMilliseconds
-	 * @return
+	 *          timout in ms
+	 * @return binary message
 	 */
 	public byte[] readBinaryMessage(final int pTimeOutInMilliseconds)
 	{

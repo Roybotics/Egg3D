@@ -1,6 +1,5 @@
 #!/usr/bin/env groovy
 
-import java.util.Random  
 Random rnd = new Random()
 
 String hostname = "localhost"

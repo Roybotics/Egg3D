@@ -54,24 +54,25 @@ public class Egg3DDemo
 														final float pButton2,
 														final float pButton3)
 				{
-					float lAbsoluteAcceleration = Math.abs(pAccX) + Math.abs(pAccY) + Math.abs(pAccZ);
+					float lAbsoluteAcceleration = Math.abs(pAccX) + Math.abs(pAccY)
+																				+ Math.abs(pAccZ);
 					if (lAbsoluteAcceleration > 0.5)
 					{
 						System.out.println("SHAKE (aa=" + lAbsoluteAcceleration
 																+ ")");
 					}
 
-						System.out.format(" q = (%g,%g,%g,%g) ; a = (%g,%g,%g ; b = (%f,%f,%f) \n",
-															pQuatW,
-															pQuatX,
-															pQuatY,
-															pQuatZ,
-															pAccX,
-															pAccY,
-															pAccZ,
-															pButton1,
-															pButton2,
-															pButton3);
+					System.out.format(" q = (%g,%g,%g,%g) ; a = (%g,%g,%g ; b = (%f,%f,%f) \n",
+														pQuatW,
+														pQuatX,
+														pQuatY,
+														pQuatZ,
+														pAccX,
+														pAccY,
+														pAccZ,
+														pButton1,
+														pButton2,
+														pButton3);
 
 					if (lAbsoluteAcceleration > 1.5)
 					{

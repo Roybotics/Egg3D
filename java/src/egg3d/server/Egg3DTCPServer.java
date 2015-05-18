@@ -52,12 +52,15 @@ public class Egg3DTCPServer implements Egg3DListener
 	 * Program entry point
 	 * 
 	 * @param argv
+	 *          command line arguments
 	 * @throws Exception
+	 *           exception
 	 */
 	public static void main(final String argv[]) throws Exception
 	{
 		SwingUtilities.invokeLater(new Runnable()
 		{
+			@Override
 			public void run()
 			{
 				setUpSysTray();
@@ -84,12 +87,12 @@ public class Egg3DTCPServer implements Egg3DListener
 				{
 					sConnectionSocket = lWelcomeSocket.accept();
 				}
-				catch (SocketTimeoutException e)
+				catch (final SocketTimeoutException e)
 				{
 				}
 			}
 
-			Socket lConnectionSocket = sConnectionSocket;
+			final Socket lConnectionSocket = sConnectionSocket;
 			if (lConnectionSocket != null && lConnectionSocket.isConnected()
 					&& !lConnectionSocket.isClosed())
 			{
@@ -100,10 +103,10 @@ public class Egg3DTCPServer implements Egg3DListener
 					sOutToClient = new DataOutputStream(lConnectionSocket.getOutputStream());
 					sInfoItem.setLabel("Client connected");
 				}
-				catch (Throwable e)
+				catch (final Throwable e)
 				{
 					e.printStackTrace();
-					sConnectionSocket=null;
+					sConnectionSocket = null;
 				}
 			}
 
@@ -141,7 +144,7 @@ public class Egg3DTCPServer implements Egg3DListener
 							sOn = false;
 						}
 					}
-					catch (Throwable e)
+					catch (final Throwable e)
 					{
 						System.err.println("Exception while trying to connect to Egg3D: " + e.getLocalizedMessage());
 						System.out.println("make sure that your Egg3D is paired (Bluetooth) and switched on!");

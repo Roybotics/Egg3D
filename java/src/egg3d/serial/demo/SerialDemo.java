@@ -30,7 +30,7 @@ public class SerialDemo
 			{
 				System.out.format("message received length=%d, index=%d \n",
 													pMessage.length,
-													pMessage[0]);// TODO
+													pMessage[0]);
 			}
 		});
 
